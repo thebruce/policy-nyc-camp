@@ -1,0 +1,766 @@
+/**
+ * Black theme for reveal.js.
+ *
+ * Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
+ */
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+/*
+font-family:'Univers LT W01 45 Light';
+font-family:'UniversLTW01-45LightObl';
+font-family:'Univers LT W01 55 Roman';
+font-family:'UniversLTW01-55Oblique';
+font-family:'UniversLTW01-47LightCn';
+font-family:'UniversLTW01-47LightCnO';
+font-family:'UniversLTW01-57Condense 723821';
+font-family:'UniversLTW01-57Condense 723818';
+font-family:'UniversLTW01-67BoldCn';
+font-family:'UniversLTW01-67BoldCnOb';
+font-family:'UniversLTW01-39ThinUltr';
+font-family:'UniversLTW01-49LightUlt';
+
+font-family:'Museo W01 100 Italic';
+font-family:'Museo W01 300 Italic';
+font-family:'Museo W01 500 Italic';
+font-family:'Museo W01 100';
+font-family:'Museo W01 300';
+font-family:'Museo W01 500';
+
+font-family:'Acta Symbols W95 Arrows';
+font-family:'ActaSymbolsW95-Circles';
+font-family:'Acta Symbols W95 Office';
+font-family:'Acta Symbols W95 Stars';
+*/
+
+// Colors
+$navy: desaturate(#2b3d51, 10%);
+$steel: desaturate(#446181, 5%);
+$blue: saturate(#6185a9, 10%);
+$lime: #23cc6f;
+
+$linkColor: $lime;
+$linkColorHover: lighten( $lime, 20% );
+$mainFontSize: 2.5em;
+
+// Base theme template for reveal.js
+
+/*********************************************
+ * GLOBAL STYLES
+ *********************************************/
+
+body {
+  background: $navy;
+  color: lighten($steel, 20%);
+}
+
+
+.reveal {
+  font-family: 'UniversLTW01-47LightCn', sans-serif;
+
+  b, strong {
+    font-family: inherit; // 'UniversLTW01-57Condense 723821';
+    font-weight: normal;
+    color: white;
+  }
+
+  font-size: 2.5em;
+  letter-spacing: 0.02em;
+}
+
+::selection {
+  background: lighten($blue, 25%);
+  color: $navy;
+  text-shadow: none;
+}
+
+/*********************************************
+ * HEADERS
+ *********************************************/
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  margin: 0 0 0.125em 0;
+  color: white;
+
+  font-family: 'UniversLTW01-49LightUlt', 'Arial Narrow', Impact, sans-serif;;
+  line-height: 1.125;
+  letter-spacing: $headingLetterSpacing;
+
+  text-shadow: $headingTextShadow;
+}
+
+.reveal h1 {
+  text-shadow: $heading1TextShadow;
+}
+
+.reveal h2 {
+  text-align: left;
+  color: $lime;
+  border-bottom: 0.125em solid darken($steel, 10%);
+}
+
+/*********************************************
+ * LINKS
+ *********************************************/
+
+.reveal a:not(.image) {
+  color: $linkColor;
+  text-decoration: none;
+
+  -webkit-transition: color .15s ease;
+     -moz-transition: color .15s ease;
+      -ms-transition: color .15s ease;
+       -o-transition: color .15s ease;
+          transition: color .15s ease;
+}
+  .reveal a:not(.image):hover {
+    color: $linkColorHover;
+
+    text-shadow: none;
+    border: none;
+  }
+
+.reveal .roll span:after {
+  color: #fff;
+  background: darken( $linkColor, 15% );
+}
+
+
+/*********************************************
+ * IMAGES
+ *********************************************/
+.reveal .imgcap {
+  font-family:'Museo W01 100 Italic';
+  font-size: 0.625em;
+}
+
+.reveal section {
+  .imgcap + img {
+  max-height: 10em !important;
+  }
+}
+
+.reveal section img {
+  display: block;
+  max-width: 100%;
+  max-height: 12em;
+
+  margin: 0 auto;
+  background: rgba(255,255,255,0.12);
+  border: 4px solid $mainColor;
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+
+  -webkit-transition: all .2s linear;
+     -moz-transition: all .2s linear;
+      -ms-transition: all .2s linear;
+       -o-transition: all .2s linear;
+          transition: all .2s linear;
+}
+
+  .reveal a:hover img {
+    background: rgba(255,255,255,0.2);
+    border-color: $linkColor;
+
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.55);
+  }
+
+
+/*********************************************
+ * STRUCTURAL
+ *********************************************/
+.reveal .slides {
+  text-align: left;
+
+  section.centered {
+    text-align: center;
+  }
+}
+
+.index-list p:not(.no-index) {
+  display: block;
+  padding-bottom: 0.25em;
+  border-bottom: 1px dotted darken($navy, 5%);
+  margin-bottom: 0.75em;
+}
+
+
+.reveal .slides>section,
+.reveal .slides>section>section {
+  padding: 0;
+}
+
+.reveal abbr {
+  border-bottom: 1px dotted $steel;
+}
+
+.reveal blockquote {
+  position: relative;
+
+  width: 80%;
+  margin: 0.5em auto;
+  padding: 0.375em;
+
+  border-radius: 6px;
+  border: 1px solid lighten($navy, 5%);
+  border-top-width: 2px;
+  border-bottom-width: 3px;
+  background: darken($navy, 5%);
+  color: lighten($steel, 30%);
+  box-shadow: 0px 0px 15px darken($navy, 5%);
+
+  text-align: center;
+  font-family:'Museo W01 100';
+  font-variant: normal;
+  font-style: normal;
+
+  quotes:"\201C""\201D""\2018""\2019";
+
+  &:before {
+    display: block;
+    position: absolute;
+    left: -0.5em;
+    top: 0.325em;
+    content:open-quote;
+    font-size:4em;
+    font-family: 'Georgia';
+    line-height:0em;
+    color: darken($navy, 5%);
+    text-shadow: 2px 2px 0 darken($navy, 15%);
+  }
+  &:after {
+    display: block;
+    position: absolute;
+    right: -0.5em;
+    bottom: -0.25em;
+    content:close-quote;
+    font-size:4em;
+    font-family: 'Georgia';
+    line-height:0em;
+    color: darken($navy, 5%);
+    text-shadow: 2px 2px 0 darken($navy, 15%);
+  }
+}
+
+.reveal .attribution {
+  margin-top: 0.25em;
+  border-top: 1px dotted darken($navy, 10%);
+  padding-top: 0.25em;
+  text-align: right;
+  font-size: 0.75em;
+}
+
+.reveal .callout {
+  color: saturate($blue, 20%);
+  font-family:'Museo W01 300 Italic';
+  font-size: 1.25em;
+  text-align: center;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.reveal .note {
+  font-size: 0.75em;
+  text-align: center;
+}
+
+/*********************************************
+ * COLUMNS
+ *********************************************/
+div.col-two, div.col-three {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  -moz-flex-flow: row wrap;
+  -ms-flex-direction: row;
+  -ms-flex-wrap: wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+
+  .col {
+    position: relative;
+
+    -webkit-flex: 1 0 0;
+    -moz-flex: 1 0 0;
+    -ms-flex: 1 0 0;
+    flex: 1 0 0;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+  }
+
+  .centered {
+    text-align: center;
+  }
+}
+div.col-two {
+  .col {
+    width: 50%;
+  }
+
+  .left {
+    float: left;
+    padding-right: 1em;
+    border-right: 1px solid lighten($navy, 5%);
+  }
+
+  .right {
+    float: right;
+    padding-left: 1em;
+    border-left: 1px solid darken($navy, 5%);
+  }
+}
+
+div.col-three {
+  .col {
+    width: 33.3%;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    float: left;
+  }
+  .first {
+    border-right: 1px solid lighten($navy, 5%);
+  }
+  .middle {
+    border-right: 1px solid lighten($navy, 5%);
+    border-left: 1px solid darken($navy, 5%);
+  }
+  .last {
+    border-left: 1px solid darken($navy, 5%);
+  }
+  .first-middle {
+    width: 66.6% !important;
+    -webkit-flex: 2 0 0;
+    -moz-flex: 2 0 0;
+    -ms-flex: 2 0 0;
+    flex: 2 0 0;
+    border-right: 1px solid lighten($navy, 5%);
+  }
+  .middle-last {
+    width: 66.6% !important;
+    -webkit-flex: 2 0 0;
+    -moz-flex: 2 0 0;
+    -ms-flex: 2 0 0;
+    flex: 2 0 0;
+    border-left: 1px solid darken($navy, 5%);
+  }
+}
+
+/*********************************************
+ * ICONS
+ *********************************************/
+.icon {
+  display: inline !important;
+
+  span { display: none; }
+
+  &.centered {
+    display: block !important;
+  }
+
+  &.link {
+    margin: 0.5em auto;
+    &:before {
+      font-size: 1em;
+      color: $lime;
+    }
+  }
+
+  &.big:before {
+    font-size: 4em !important;
+    margin-bottom: 0.375em;
+    text-shadow: 2px 2px 0 darken($navy, 15%);
+  }
+
+  &.super:before {
+    font-size: 8em !important;
+    margin-top: 0.375em;
+    margin-bottom: 0.125em;
+    text-shadow: 2px 2px 0 darken($navy, 15%);
+  }
+
+  &:before {
+    margin: 0.125em 0.075em;
+    display: inline-block;
+    font-size: 3em;
+    color: lighten($navy, 10%);
+  }
+}
+
+.reveal h3.iconinline {
+  &:before {
+    font-size: 0.9em !important;
+    line-height: 0;
+    margin-right: 0.5em;
+    color: white;
+  }
+}
+
+.reveal h2.iconinline {
+  &:before {
+    font-size: 0.8em !important;
+    vertical-align: 0.1em;
+    line-height: 0;
+    margin-right: 0.25em;
+    color: $lime;
+  }
+}
+
+.draft-empty {
+  &:before {
+    font-family:'Acta Symbols W95 Office';
+    content: '0';
+    color: $blue;
+  }
+}
+
+.draft-first {
+  &:before {
+    font-family:'Acta Symbols W95 Office';
+    content: '2';
+    color: crimson;
+  }
+}
+
+.draft-revised {
+  &:before {
+    font-family:'Acta Symbols W95 Office';
+    content: '3';
+    color: orange;
+  }
+}
+
+.draft-final {
+  &:before {
+    font-family:'Acta Symbols W95 Office';
+    content: 'D';
+    color: $lime;
+  }
+}
+
+.draft-locked {
+  &:before {
+    font-family:'Acta Symbols W95 Office';
+    content: 'B';
+  }
+}
+
+.browser {
+  &:before {
+    font-family:'Acta Symbols W95 Office';
+    content: 'Q';
+  }
+}
+
+.arrow-right-stroke {
+  &:before {
+    font-family:'Acta Symbols W95 Arrows';
+    font-size: 1.5em !important;
+    vertical-align: 0.375em;
+    content: 'B';
+  }
+}
+
+
+.arrow-right-indented {
+  &.margin {
+    position: absolute;
+    z-index: 10;
+    font-size: 1.5em;
+    top: 40%;
+    right: -0.75em;
+  }
+  &:before {
+    font-family:'Acta Symbols W95 Arrows';
+    font-size: 1.5em !important;
+    vertical-align: 0.375em;
+    content: 'Z';
+  }
+}
+
+.chevron-down {
+  margin-bottom: -0.375em !important;
+  &:before {
+    margin: 0 0.075em;
+    font-family:'Acta Symbols W95 Arrows';
+    font-size: 1.5em !important;
+    vertical-align: 0.375em;
+    content: 'v';
+  }
+}
+
+.compass {
+  &:before {
+    font-family:'Acta Symbols W95 Stars';
+    content: '4';
+  }
+}
+
+.number1 {
+  &:before {
+    font-family:'ActaSymbolsW95-Circles';
+    font-size: 2em;
+    content: '1';
+  }
+}
+
+.number2 {
+  &:before {
+    font-family:'ActaSymbolsW95-Circles';
+    font-size: 2em;
+    content: '2';
+  }
+}
+
+.number3 {
+  &:before {
+    font-family:'ActaSymbolsW95-Circles';
+    font-size: 2em;
+    content: '3';
+  }
+}
+
+.number4 {
+  &:before {
+    font-family:'ActaSymbolsW95-Circles';
+    font-size: 2em;
+    content: '4';
+  }
+}
+
+.number5 {
+  &:before {
+    font-family:'ActaSymbolsW95-Circles';
+    font-size: 2em;
+    content: '5';
+  }
+}
+
+.number6 {
+  &:before {
+    font-family:'ActaSymbolsW95-Circles';
+    font-size: 2em;
+    content: '6';
+  }
+}
+
+.number7 {
+  &:before {
+    font-family:'ActaSymbolsW95-Circles';
+    font-size: 2em;
+    content: '7';
+  }
+}
+
+.number8 {
+  &:before {
+    font-family:'ActaSymbolsW95-Circles';
+    font-size: 2em;
+    content: '8';
+  }
+}
+
+.circlecheck {
+  &:before {
+    font-family:'icomoon';
+    font-size: 2em;
+    content: '\e0fb';
+  }
+}
+
+.person {
+  &:before {
+    font-family:'icomoon';
+    font-size: 2em;
+    content: '\e070';
+  }
+}
+
+.people {
+  &:before {
+    font-family:'icomoon';
+    font-size: 2em;
+    vertical-align: 0.1em; // Bump this up, it sits pretty heavy on its baseline
+    content: '\e071';
+  }
+}
+
+.drop {
+  &:before {
+    font-family:'icomoon';
+    font-size: 2em;
+    content: '\e00a';
+  }
+}
+
+.orgtree {
+  &:before {
+    font-family:'icomoon';
+    font-size: 2em;
+    content: '\e0b9';
+  }
+}
+
+.inbox {
+  &:before {
+    font-family:'icomoon';
+    font-size: 2em;
+    content: '\e05a';
+  }
+}
+
+.homeoffice {
+  &:before {
+    font-family:'icomoon';
+    font-size: 2em;
+    content: '\e003';
+  }
+}
+
+.house {
+  &:before {
+    font-family:'icomoon';
+    font-size: 2em;
+    content: '\e000';
+  }
+}
+
+.paperpair {
+  &:before {
+    font-family:'icomoon';
+    font-size: 2em;
+    content: '\e027';
+  }
+}
+
+.dialog {
+  &:before {
+    font-family:'icomoon';
+    font-size: 2em;
+    content: '\e06c';
+  }
+}
+
+.book {
+  &:before {
+    font-family:'icomoon';
+    font-size: 2em;
+    content: '\e01f';
+  }
+}
+
+.binoculars {
+  &:before {
+    font-family:'icomoon';
+    font-size: 2em;
+    content: '\e07e';
+  }
+}
+
+.stacked {
+  &:before {
+    font-family:'icomoon';
+    font-size: 2em;
+    content: '\e02d';
+  }
+}
+
+.suit {
+  &:before {
+    font-family:'icomoon';
+    font-size: 2em;
+    content: '\e075';
+  }
+}
+
+.gears {
+  &:before {
+    font-family:'icomoon';
+    font-size: 2em;
+    content: '\e08f';
+  }
+}
+
+.photo {
+  &:before {
+    font-family:'icomoon';
+    font-size: 2em;
+    content: '\e00e';
+  }
+}
+
+
+/*********************************************
+ * NAVIGATION CONTROLS
+ *********************************************/
+
+.reveal .controls div.navigate-left,
+.reveal .controls div.navigate-left.enabled {
+  border-right-color: $linkColor;
+}
+
+.reveal .controls div.navigate-right,
+.reveal .controls div.navigate-right.enabled {
+  border-left-color: $linkColor;
+}
+
+.reveal .controls div.navigate-up,
+.reveal .controls div.navigate-up.enabled {
+  border-bottom-color: $linkColor;
+}
+
+.reveal .controls div.navigate-down,
+.reveal .controls div.navigate-down.enabled {
+  border-top-color: $linkColor;
+}
+
+.reveal .controls div.navigate-left.enabled:hover {
+  border-right-color: $linkColorHover;
+}
+
+.reveal .controls div.navigate-right.enabled:hover {
+  border-left-color: $linkColorHover;
+}
+
+.reveal .controls div.navigate-up.enabled:hover {
+  border-bottom-color: $linkColorHover;
+}
+
+.reveal .controls div.navigate-down.enabled:hover {
+  border-top-color: $linkColorHover;
+}
+
+
+/*********************************************
+ * PROGRESS BAR
+ *********************************************/
+
+.reveal .progress {
+  background: rgba(0,0,0,0.8);
+}
+  .reveal .progress span {
+    background: $linkColor;
+
+    -webkit-transition: width 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985);
+       -moz-transition: width 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985);
+        -ms-transition: width 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985);
+         -o-transition: width 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985);
+            transition: width 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985);
+  }
+
+
